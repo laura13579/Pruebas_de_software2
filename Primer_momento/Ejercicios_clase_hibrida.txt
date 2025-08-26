@@ -1,0 +1,172 @@
+Ejercicios clase hibrida
+Lo que hice en este caso, fue juntarlo todo en un solo proyecto, usando un menú, pa que el usuario elija que opción de ejercicio quiere ejecutar y ya, pa probarlo, basta con crear un nuevo proyecto, y llamarlo ejercicios4ps, copiar y pegar todo este código que esta aquí y ya bayy:)
+
+
+
+package ejercicios4ps;
+import java.util.Scanner;
+
+public class Ejercicios4ps {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        
+        //ejercicio1
+        int[] num1 ={1, 2, 3, 4, 5};
+        int[] num2 ={5, 3, 4, 1};
+        System.out.println(arreglo_ordenado(num1));
+        System.out.println(arreglo_ordenado(num2));
+        
+        //ejercicio2
+        System.out.println(comparar_cadenas("hola", "aloh")); 
+        System.out.println(comparar_cadenas("java", "avaj")); 
+        System.out.println(comparar_cadenas("mango", "ognam"));
+        System.out.println(comparar_cadenas("test", "tseto")); 
+        
+        //ejercici03
+        System.out.println(contraseña_segura("Abc123!@")); 
+        System.out.println(contraseña_segura("abc123"));  
+        System.out.println(contraseña_segura("ABCDEFGH"));  
+        System.out.println(contraseña_segura("A1b2c3d4"));  
+        
+        //ejercicio4
+        cantidad_de_vocales("Hola Mundo"); 
+
+        int opcion;
+        
+        do{
+            System.out.println("-----Hola, bienvenido-----");
+            System.out.println("Escoga una opción:");
+            System.out.println("1. Determinar arreglo ordenado");
+            System.out.println("2. Comparar cadenas inversas");
+            System.out.println("3. Revisar contraseña segura");
+            System.out.println("4. Cantidad de vocal en cadena");
+            System.out.println("5. Salir y finalizar");
+            opcion= sc.nextInt();
+            sc.nextLine();
+            
+            
+            //metodos4
+            switch(opcion){
+            
+                case 1:
+                    System.out.println("Ingrese tamaño del arreglo:");
+                    int n = sc.nextInt();
+                    int[] arr = new int[n];
+                    for (int i = 0; i < n; i++) {
+                        System.out.print("Numero " + (i+1) + ": ");
+                        arr[i] = sc.nextInt();
+                    }
+                    System.out.println("¿Esta ordenado? " + arreglo_ordenado(arr));
+                    break;
+                    
+                case 2:
+                    System.out.print("Ingrese primera cadena: ");
+                    String cad1 = sc.nextLine();
+                    System.out.print("Ingrese segunda cadena: ");
+                    String cad2 = sc.nextLine();
+                    System.out.println("¿Es inversa? " + comparar_cadenas(cad1, cad2));                    break;
+                    
+                case 3:
+                    System.out.print("Ingrese contraseña: ");
+                    String pass = sc.nextLine();
+                    System.out.println("¿Es segura? " + contraseña_segura(pass));                    break;
+                    
+                case 4:
+                    System.out.print("Ingrese texto: ");
+                    String txt = sc.nextLine();
+                    cantidad_de_vocales(txt);                    break;
+                    
+                case 5:
+                    System.out.println("Finalizando.......");
+                    break;
+                    
+                default:
+                    System.out.println("Opcion incorrecta, intente otra vez");
+            }
+        }while(opcion !=5);
+        sc.close();
+    }
+    
+        //ejercicio1
+        public static boolean arreglo_ordenado(int[] arreglo){
+            for(int i=0; i <arreglo.length -1; i++){
+                if (arreglo[i] > arreglo[i+1]) {
+                    return false;
+                }
+            }
+                return true;
+        }
+    
+        
+        //ejercicio2
+        public static boolean comparar_cadenas(String cadena1, String cadena2){
+        
+            if (cadena1.length() != cadena2.length()) {
+                return false;
+            }
+            
+            
+            for (int i = 0; i < cadena1.length(); i++) {
+                if (cadena1.charAt(i) !=cadena2.charAt(cadena2.length()-1 -i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    
+    
+        //ejercicio3
+        public static boolean contraseña_segura(String contraseña){
+        
+            if (contraseña.length() < 8) {
+                return false;
+            }
+        
+            boolean mayuscula = false;
+            boolean minuscula = false;
+            boolean numero = false;
+            boolean caracter = false;
+            String caracteres = "!@#$%&";
+            
+            
+            for (int i = 0; i < contraseña.length(); i++) {
+            char c = contraseña.charAt(i);
+
+            if (Character.isUpperCase(c)) {
+                mayuscula = true;
+            } else if (Character.isLowerCase(c)) {
+                minuscula = true;
+            } else if (Character.isDigit(c)) {
+                numero = true;
+            } else if (caracteres.indexOf(c) != -1) {
+                caracter = true;
+            }
+            }
+            return (mayuscula && minuscula && numero && caracter);
+        }
+        
+       
+        //ejercicio4
+        public static void cantidad_de_vocales(String texto){
+            
+            texto = texto.toLowerCase();
+            int vocales = 0;
+            int consonantes = 0;
+            String lista_vocales = "aeiou";
+            
+            for (int i = 0; i < texto.length(); i++) {
+            char c = texto.charAt(i);
+
+            if (Character.isLetter(c)) {
+                if (lista_vocales.indexOf(c) != -1) {
+                    vocales++; 
+                } else {
+                    consonantes++; 
+                }
+            }
+        }
+        System.out.println("Número de vocales: " + vocales);
+        System.out.println("Número de consonantes: " + consonantes);
+    }
+}
