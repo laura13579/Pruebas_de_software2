@@ -1,5 +1,6 @@
 Ejercicios clase hibrida
-Lo que hice en este caso, fue juntarlo todo en un solo proyecto, usando un menú, pa que el usuario elija que opción de ejercicio quiere ejecutar y ya, pa probarlo, basta con crear un nuevo proyecto, y llamarlo ejercicios4ps, copiar y pegar todo este código que esta aquí y ya bayy:)
+Lo que hice en este caso, fue juntarlo todo en un solo proyecto, usando un menú, pa que el usuario elija que opción de ejercicio quiere ejecutar y ya,
+ pa probarlo, basta con crear un nuevo proyecto, y llamarlo ejercicios4ps, copiar y pegar todo este código que esta aquí y ya bayy:)
 
 
 
@@ -170,3 +171,4 @@ public class Ejercicios4ps {
         System.out.println("Número de consonantes: " + consonantes);
     }
 }
+
